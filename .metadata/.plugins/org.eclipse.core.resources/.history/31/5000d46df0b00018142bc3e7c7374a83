@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+</head>
+<style>
+	body{
+	background-image: "C:\Users\sandeeda\Desktop\lemur.jpg"
+	
+	}
+</style>
+<body>
+<!--<a href="Hello">Click here...i will say hello</a> -->
+
+<form action="greet" method="post">
+	<label><strong>Enter your name</strong></label>
+	<input type="text" name="username" size="15"/>
+	<input type="submit"/>
+</form>
+</body>
+</html>
