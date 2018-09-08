@@ -47,6 +47,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// TODO Auto-generated method stub
 		return employees.add(employee);
 	}
+	
 
 	@Override
 	public Employee updateEmployee(Employee employee) {
@@ -54,7 +55,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		for (Employee employeeIter : employees) {
 			if(employeeIter.getEmployeeId()==employee.getEmployeeId())
 					{
-						employeeIter=employee;
+						employeeIter.setEmployeeDepartment(employee.getEmployeeDepartment());
+						employeeIter.setEmployeeName(employee.getEmployeeName());
+						employeeIter.setEmployeeSalary(employee.getEmployeeSalary());
 					}
 		}
 		return null;

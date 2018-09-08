@@ -9,7 +9,7 @@
 <body bgcolor="lavender">
 	<h1>Add new employee</h1>
 	<hr>
-	<form action="addEmployee" method="post">
+	<form action="addEmployee" method="get">
 	
 	
 	<label>Employee ID:</label>
