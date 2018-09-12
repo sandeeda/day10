@@ -46,7 +46,6 @@ public class AddEmployeeController extends HttpServlet {
     			
     			context.setAttribute("employeeDao", employeeDao);
     			RequestDispatcher dispatcher = null;
-
     			
     			Employee employee = new Employee(empId, empName, empSalary, empDept);
     			
