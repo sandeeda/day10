@@ -16,7 +16,7 @@
 	
 	
 	<label>New Password</label>
-	<input type="password" size=20 name="newPassword" placeholder="${sessionScope.customer.customerName}">
+	<input type="password" size=20 name="newPassword" >
 	
 	
 	<label>confirm new Password</label>

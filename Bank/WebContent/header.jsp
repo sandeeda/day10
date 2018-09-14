@@ -43,13 +43,18 @@
 	      	<li><a href="changePassword.jsp">Change Password</a></li>
 	      </c:if>
 	      
+	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      	<li><a href="editProfile.jsp">Edit Profile</a></li>
+	      </c:if>
+	      
+	      
 	    </ul>
 	  <ul class="nav navbar-nav navbar-right">
 	 	<c:if test="${sessionScope.customer.customerName!=null}">
      		<li><a href="displayDetails.jsp"><span class="glyphicon glyphicon-user">${sessionScope.customer.customerName}</span></a></li>
 		</c:if>
 	  	<c:if test="${sessionScope.customer.customerName!=null}">
-     		<li><a href="#"><span class="glyphicon glyphicon-user"></span>Log out</a></li>
+     		<li><a href="logout.do"><span class="glyphicon glyphicon-user"></span>Log out</a></li>
 		</c:if>
 	      
 	      

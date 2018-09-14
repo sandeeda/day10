@@ -59,7 +59,7 @@ public class FundTransferController extends HttpServlet {
 		{
 			dispatcher = request.getRequestDispatcher("transferFail.jsp");
 		}
-		
+		context.setAttribute("bankAccountService", bankAccountService);
 		dispatcher.include(request, response);
 	}
 

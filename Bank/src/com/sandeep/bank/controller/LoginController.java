@@ -46,8 +46,8 @@ public class LoginController extends HttpServlet {
 		
 		
 		
-		request.setAttribute("accountId", customerId);
-		request.setAttribute("password", password);
+		/*request.setAttribute("accountId", customerId);
+		request.setAttribute("password", password);*/
 		
 		
 		

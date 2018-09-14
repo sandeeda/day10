@@ -37,10 +37,8 @@ public class CustomerDaoImpl implements CustomerDao {
 			if(customer2.getCustomerId()==customer.getCustomerId())
 			{
 				customer2.setAddress(customer.getAddress());
-				customer2.setCustomerName(customer.getCustomerName());
-				customer2.setDateOfBirth(customer.getDateOfBirth());
+				System.out.println(customer.getAddress());
 				customer2.setEmail(customer.getEmail());
-				DataBase.setAllCustomerData(customerData);
 				return customer2;
 			}
 		}
@@ -50,15 +48,12 @@ public class CustomerDaoImpl implements CustomerDao {
 	@Override
 	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
-		HashSet<Customer> customerData = new HashSet<>();
-		customerData=DataBase.getAllCustomerData();
 		for (Customer customer2 : customerData) {
 			if(customer2.getCustomerId()==customer.getCustomerId())
 			{
 				if(customer2.getPassword()==customer.getPassword())
 				{
-					customer2.setPassword(customer.getPassword());
-					DataBase.setAllCustomerData(customerData);
+					customer2.setPassword(newPassword);
 					return true;
 				}
 			}

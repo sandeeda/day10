@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Transfer success</title>
+
+<title>Password Changed successfully</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>  
-	<h1>Success</h1>
-	
-	<p>updated balance ${sessionScope.customer.bankAccount.balance}</p>
+	<h1>Password Changed successfully</h1>
 </body>
 </html>
