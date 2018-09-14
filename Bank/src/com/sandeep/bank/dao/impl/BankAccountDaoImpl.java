@@ -23,7 +23,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
 				return bankAccount.getBalance();
 			}
 		}
-		return 0;
+		return -1;
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
 		for (BankAccount bankAccount : bankData) {
 			if(bankAccount.getAccountId()==accountId)
 			{
-				if(bankAccount.getBalance()>=amount) {
+				if(bankAccount.getBalance()+amount>=0) {
 				bankAccount.setBalance(bankAccount.getBalance()+amount);
 				System.out.println(bankAccount.getBalance());
 				return true;

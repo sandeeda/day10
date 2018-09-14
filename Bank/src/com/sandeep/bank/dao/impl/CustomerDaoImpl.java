@@ -51,7 +51,7 @@ public class CustomerDaoImpl implements CustomerDao {
 		for (Customer customer2 : customerData) {
 			if(customer2.getCustomerId()==customer.getCustomerId())
 			{
-				if(customer2.getPassword()==customer.getPassword())
+				if(customer2.getPassword().equals(oldPassword))
 				{
 					customer2.setPassword(newPassword);
 					return true;

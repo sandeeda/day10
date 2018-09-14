@@ -8,6 +8,7 @@
 <title>Change Password</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 	<form action="changePassword.do" method="post">
 	

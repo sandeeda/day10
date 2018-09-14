@@ -40,7 +40,6 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
 		String customerId = request.getParameter("customerId");
 		String password = request.getParameter("password");
 		
@@ -53,10 +52,19 @@ public class LoginController extends HttpServlet {
 		
 		customer=new Customer(null, Integer.parseInt(customerId), password, null, null, null, null);
 		HttpSession session=request.getSession();
-		session.setAttribute("customer",customerService.authenticate(customer));
+		RequestDispatcher dispatcher;
+		if((customer=customerService.authenticate(customer))!=null)
+		{
+		session.setAttribute("customer",customer);
 		context.setAttribute("customerService", customerService);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("displayDetails.jsp");
+		dispatcher = request.getRequestDispatcher("displayDetails.jsp");
+		}
+		else
+		{
+			dispatcher = request.getRequestDispatcher("userDoesNotExist.jsp");
+		}
 		dispatcher.forward(request, response);
+
 		
 	}
 

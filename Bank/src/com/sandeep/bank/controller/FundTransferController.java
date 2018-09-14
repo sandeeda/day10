@@ -59,8 +59,28 @@ public class FundTransferController extends HttpServlet {
 		{
 			dispatcher = request.getRequestDispatcher("transferFail.jsp");
 		}
-		context.setAttribute("bankAccountService", bankAccountService);
+		
 		dispatcher.include(request, response);
 	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
+		long payeeAccountNumber = Long.parseLong(request.getParameter("payeeAccountNumber"));
+		int amount = Integer.parseInt(request.getParameter("amount"));
+		Customer custTemp;
+		
+		HttpSession session = request.getSession();
+		custTemp = (Customer) session.getAttribute("customer");
+		
+		System.out.println(payeeAccountNumber);
+		RequestDispatcher dispatcher;
+		bankAccountService.deposit(payeeAccountNumber, amount);
+		request.setAttribute("success", true);
+		response.sendRedirect("http://10.246.92.175:8070/IdbiBankApp/success.jsp?success=true");
+	
+		
+	}
+
 
 }

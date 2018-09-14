@@ -35,7 +35,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Override
 	public boolean fundTransfer(long fromAcc, long toAcc, double amount) {
-		if(bankAccountDao.updateBalance(fromAcc, -1*amount))
+		if(bankAccountDao.getBalance(toAcc)<0)
+		{
+			return false;
+		}
+		
+		else if(bankAccountDao.updateBalance(fromAcc, -1*amount))
 		{
 			if(bankAccountDao.updateBalance(toAcc, amount))
 			{

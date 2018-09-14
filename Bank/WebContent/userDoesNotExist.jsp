@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Balance inquiry</title>
+<title>Invalid Credentials</title>
 </head>
 <body>
-
 <%@ include file="header.jsp" %>
-
-<h3>Your ${sessionScope.customer.bankAccount.accountType} account clear balance is: ${sessionScope.customer.bankAccount.balance}</h3>
-
+	<h1 style="color:red;">Invalid Credentials! Please try again or reach to our nearest branch</h1>
 </body>
 </html>
