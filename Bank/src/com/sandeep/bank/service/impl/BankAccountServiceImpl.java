@@ -1,39 +1,50 @@
 package com.sandeep.bank.service.impl;
 
-import java.util.HashSet;
 
-import com.sandeep.bank.model.BankAccount;
+import com.sandeep.bank.dao.BankAccountDao;
+import com.sandeep.bank.dao.impl.BankAccountDaoImpl;
 import com.sandeep.bank.service.BankAccountService;
 
 public class BankAccountServiceImpl implements BankAccountService {
 
-	private HashSet<BankAccount> bankAccountDeatils = new HashSet<>();
+	private BankAccountDao bankAccountDao;
 	public BankAccountServiceImpl() {
-		// TODO Auto-generated constructor stub
+		bankAccountDao=new BankAccountDaoImpl();
 	}
 
 	@Override
 	public double getBalance(long accountId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return bankAccountDao.getBalance(accountId);
 	}
 
 	@Override
 	public double withdraw(long accountId, double amount) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(bankAccountDao.updateBalance(accountId, -1*amount))
+			return bankAccountDao.getBalance(accountId);
+		return bankAccountDao.getBalance(accountId);
+		
+		
 	}
 
 	@Override
 	public double deposit(long accountId, double amount) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(bankAccountDao.updateBalance(accountId, amount))
+			return bankAccountDao.getBalance(accountId);
+		return bankAccountDao.getBalance(accountId);
 	}
 
 	@Override
 	public boolean fundTransfer(long fromAcc, long toAcc, double amount) {
-		// TODO Auto-generated method stub
+		if(bankAccountDao.updateBalance(fromAcc, -1*amount))
+		{
+			if(bankAccountDao.updateBalance(toAcc, amount))
+			{
+				return true;
+			}
+		}
 		return false;
+		
+		
 	}
 
 }

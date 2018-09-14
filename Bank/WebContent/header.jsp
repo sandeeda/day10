@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +16,12 @@
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="index.jsp"><img src="https://www.freepnglogos.com/uploads/eagle-png-logo/morehead-state-eagle-png-logo-8.png" width="80" height="50"/></a>
+	     <img src="https://www.freepnglogos.com/uploads/eagle-png-logo/morehead-state-eagle-png-logo-8.png" width="80" height="50"/>
 	    </div>
 	    <ul class="nav navbar-nav">
+	    <c:if test="${sessionScope.customer.customerId==null}">
 	      <li class="active"><a href="index.jsp">Home</a></li>
+	     </c:if>
 	      <!-- <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
 	        <ul class="dropdown-menu">
 	          <li><a href="#">Page 1-1</a></li>
@@ -25,12 +29,31 @@
 	          <li><a href="#">Page 1-3</a></li>
 	        </ul>
 	      </li> -->
-	      <li><a href="loginCustomer.jsp">Login</a></li>
+	      <c:if test="${sessionScope.customer.customerId==null}">
+	      	<li><a href="loginCustomer.jsp">Login</a></li>
+	      </c:if>
+	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      	<li><a href="balanceEnquiry.jsp">Balance inquiry</a></li>
+	      </c:if>
+	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      	<li><a href="fundTransfer.jsp">Fund Transfer</a></li>
+	      </c:if>
+	      	
+	      <c:if test="${sessionScope.customer.customerId!=null}">
+	      	<li><a href="changePassword.jsp">Change Password</a></li>
+	      </c:if>
+	      
 	    </ul>
-	  <!--   <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	    </ul> -->
+	  <ul class="nav navbar-nav navbar-right">
+	 	<c:if test="${sessionScope.customer.customerName!=null}">
+     		<li><a href="displayDetails.jsp"><span class="glyphicon glyphicon-user">${sessionScope.customer.customerName}</span></a></li>
+		</c:if>
+	  	<c:if test="${sessionScope.customer.customerName!=null}">
+     		<li><a href="#"><span class="glyphicon glyphicon-user"></span>Log out</a></li>
+		</c:if>
+	      
+	      
+	    </ul>
 	  </div>
 	</nav>
 	  

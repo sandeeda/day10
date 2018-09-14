@@ -7,23 +7,40 @@ import com.sandeep.bank.database.DataBase;
 import com.sandeep.bank.model.BankAccount;
 
 public class BankAccountDaoImpl implements BankAccountDao {
-	private DataBase dataBase;
+	private HashSet<BankAccount> bankData;
+
 	public BankAccountDaoImpl() {
 		// TODO Auto-generated constructor stub
+		bankData=DataBase.getAllBankData();
 	}
 
 	@Override
 	public double getBalance(long accountId) {
 		// TODO Auto-generated method stub
-		HashSet<BankAccount> bankData = new HashSet<>();
-		bankData = dataBase.getAllBankData();
-		return 100;
+		for (BankAccount bankAccount : bankData) {
+			if(bankAccount.getAccountId()==accountId)
+			{
+				return bankAccount.getBalance();
+			}
+		}
+		return 0;
 	}
 
 	@Override
-	public boolean updateBalance(long accountId, double newBalance) {
+	public boolean updateBalance(long accountId, double amount) {
 		// TODO Auto-generated method stub
+		for (BankAccount bankAccount : bankData) {
+			if(bankAccount.getAccountId()==accountId)
+			{
+				if(bankAccount.getBalance()>=amount) {
+				bankAccount.setBalance(bankAccount.getBalance()+amount);
+				System.out.println(bankAccount.getBalance());
+				return true;
+				}
+			}
+		}
 		return false;
+		
 	}
 
 }

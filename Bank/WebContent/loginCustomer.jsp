@@ -13,8 +13,8 @@
 
 	<form action="login.do" method="post">
 	
-		<label>Account Id: </label>
-		<input type="text" size="15" name = "accountId" required>
+		<label>Customer Id: </label>
+		<input type="text" size="15" name = "customerId" required>
 		<br>
 		
 		<label>Password: </label>
