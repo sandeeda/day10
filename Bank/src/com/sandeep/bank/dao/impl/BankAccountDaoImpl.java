@@ -100,8 +100,8 @@ public class BankAccountDaoImpl implements BankAccountDao {
 
 	@Override
 	public boolean updateBalance(long accountId, double amount) {
-		
-		
+
+
 		String updateBalanceQuery="update bankdata set balance=? where accountId=?";
 		String getBalanceQuery="select balance from bankdata where accountid=?";
 		System.out.println("i am here in update balance");
@@ -115,19 +115,22 @@ public class BankAccountDaoImpl implements BankAccountDao {
 			while(result.next())
 			{
 				System.out.println(result.getInt(1));
-			updateBalanceQueryStatement.setInt(1, ((int) amount+result.getInt(1)));
-			updateBalanceQueryStatement.setInt(2, (int) accountId);
-			if(updateBalanceQueryStatement.executeUpdate()==1)
-				return true;
+				if(((int) amount+result.getInt(1))>=0)
+				{
+				updateBalanceQueryStatement.setInt(1, ((int) amount+result.getInt(1)));
+				updateBalanceQueryStatement.setInt(2, (int) accountId);
+				if(updateBalanceQueryStatement.executeUpdate()==1)
+					return true;
+				}
 			}
-			
+
 		} 
 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return false;
 
 	}
