@@ -45,7 +45,7 @@ public class EditProfileController extends HttpServlet {
 		customerEditted.setEmail(email);
 		
 
-		customerService.updateProfile(customerEditted);
+		session.setAttribute("customer", customerService.updateProfile(customerEditted));
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("profileUpdatedSuccessfully.jsp");

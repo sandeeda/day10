@@ -10,5 +10,6 @@
 	<%@ include file="header.jsp" %>  
 	<h1 style="color: red;">Failed! Please try after some time
 	</h1>
+	<p>${requestScope.fundTransferFail}</p>
 </body>
 </html>

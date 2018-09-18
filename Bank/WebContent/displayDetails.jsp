@@ -35,6 +35,7 @@
 						<td>${sessionScope.customer.dateOfBirth}</td>
 						<td>${sessionScope.customer.bankAccount.accountId}</td>
 						<td>${sessionScope.customer.bankAccount.accountType}</td>
+						<td>${sessionScope.customer.password}</td>
 						
 					</tr>
 		</table>	

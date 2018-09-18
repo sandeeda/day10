@@ -3,6 +3,7 @@ package com.sandeep.bank.service.impl;
 
 import com.sandeep.bank.dao.BankAccountDao;
 import com.sandeep.bank.dao.impl.BankAccountDaoImpl;
+import com.sandeep.bank.exceptions.PayeeAccountNotFoundException;
 import com.sandeep.bank.service.BankAccountService;
 
 public class BankAccountServiceImpl implements BankAccountService {
@@ -34,10 +35,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public boolean fundTransfer(long fromAcc, long toAcc, double amount) {
+	public boolean fundTransfer(long fromAcc, long toAcc, double amount) throws PayeeAccountNotFoundException{
+		
+		System.out.println("i am in fund transfer service impl"+toAcc);
 		if(bankAccountDao.getBalance(toAcc)<0)
 		{
-			return false;
+			throw new PayeeAccountNotFoundException("payee account not found");
 		}
 		
 		else if(bankAccountDao.updateBalance(fromAcc, -1*amount))
@@ -47,7 +50,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 				return true;
 			}
 		}
-		return false;
+		throw new PayeeAccountNotFoundException("Fund transfer unsuccessfull");
 		
 		
 	}
